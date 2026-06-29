@@ -7,13 +7,13 @@ ENV/
 # MediaPipe model assets (files > 10MB)
 assets/*.task
 
-# Python Cache & Artifacts
+# Python Cache & Artifacts (Abaikan folder output build PyInstaller, tapi simpan folder build/ berisi spec/script)
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
-build/
+/build_output/
 dist/
 *.spec.bak
 *.egg-info/
