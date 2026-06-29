@@ -1,0 +1,38 @@
+name: Build Windows Executable
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          architecture: 'x64'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Download MediaPipe Model
+        run: |
+          curl -o assets/hand_landmarker.task https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/latest/hand_landmarker.task
+
+      - name: Build with PyInstaller
+        run: |
+          pyinstaller build/build_windows.spec
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: FotoKitaBlur-Windows-x64
+          path: dist/FotoKitaBlur.exe

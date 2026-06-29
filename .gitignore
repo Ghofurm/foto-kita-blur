@@ -1,0 +1,30 @@
+# Environments & Virtual Envs
+.venv/
+venv/
+env/
+ENV/
+
+# MediaPipe model assets (files > 10MB)
+assets/*.task
+
+# Python Cache & Artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+*.spec.bak
+*.egg-info/
+.eggs/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
